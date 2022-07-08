@@ -1,0 +1,21 @@
+.page {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+  min-height: 100vh;
+	padding-bottom: 80px;
+	background: #282828;
+
+	&Wrapper {
+		width: 100%;
+		max-width: 992px;
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 576px) {
+	.page {
+    padding-bottom: 40px;
+	}
+}

@@ -1,0 +1,31 @@
+.round {
+  background: linear-gradient(135deg, rgba(#d7d7d7, 0.15), rgba(#d7d7d7, 0.05));
+	backdrop-filter: blur(4px);
+	margin-top: 40px;
+  padding: 20px;
+	border-radius: 1.25em;
+	box-shadow: 0 0 8px rgba(#141414, 1),
+	0 0 8px rgba(#141414, 0.5),
+	0 0 16px rgba(#141414, 0.25);
+
+  &:first-of-type {
+    margin-top: 32px;
+  }
+
+  &Notes {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+}
+
+@media (max-width: 576px) {
+	.round {
+    margin-top: 20px;
+
+    &:first-of-type {
+      margin-top: 12px;
+    }
+	}
+}
+

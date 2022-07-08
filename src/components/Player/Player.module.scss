@@ -1,0 +1,131 @@
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 256px;
+  width: 100%;
+  font-size: 16px;
+  color: #ebebeb;
+  transition: .5s all ease-in-out;
+
+  &.active {
+    max-width: 320px;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 12px;
+  }
+
+  &Slot {
+    display: flex;
+    margin-right: 16px;
+    transition: .5s all ease-in-out;
+    
+    &.active {
+      width: 84px;
+    }
+
+    &Number {
+      display: flex;
+      justify-content: center;
+      width: 24px;
+    }
+
+    &Icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      margin: 0 8px;
+    }
+  }
+
+  &Role {
+    margin-right: 16px;
+    letter-spacing: 0.0625em;
+    font-family: 'Roboto', sans-serif;
+
+    &.mafia {
+      color: #141414;
+      font-weight: 500;
+    }
+
+    &.peaceful {
+      color: #ebebeb;
+      font-weight: 300;
+    }
+
+    &.don {
+      color: #141414;
+      font-weight: 700;
+    }
+
+    &.commisar {
+      color: #eb0000;
+      font-weight: 700;
+    }
+
+    &.medic {
+      color: #eb0000;
+      font-weight: 500;
+    }
+  }
+
+  &Fouls {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &Button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #ebebeb;
+      border-radius: 50%;
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ebebeb;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
+      transition: .25s all ease-in-out;
+
+      &:hover {
+        border-color: transparent;
+        transition: .25s all ease-in-out;
+        animation: hoverFlickering 1.5s ease-in-out infinite;
+        animation-delay: .25s;
+      }
+    }
+
+    &Amount {
+      margin-left: 16px;
+      margin-right: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ebebeb;
+      font-family: 'Roboto', sans-serif;
+    }
+  }
+}
+
+@keyframes hoverFlickering {
+	0%, 100% {
+    border-color: transparent;
+		box-shadow: 0 0 4px transparent,
+		inset 0 0 4px transparent;
+		filter: drop-shadow(0 0 16px transparent)
+		drop-shadow(0 0 8px transparent)
+		drop-shadow(0 0 4px transparent);
+	}
+	50% {
+		border-color: #ebebeb;
+		box-shadow: 0 0 4px rgba(#ebebeb, 1),
+		inset 0 0 4px rgba(#ebebeb, 1);
+		filter: drop-shadow(0 0 16px rgba(#ebebeb, .25))
+		drop-shadow(0 0 8px rgba(#ebebeb, .25))
+		drop-shadow(0 0 4px rgba(#ebebeb, .25));
+	}
+}

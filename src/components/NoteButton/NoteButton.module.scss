@@ -1,0 +1,38 @@
+.option {
+  height: 48px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  border: 1px solid #ebebeb;
+	border-radius: 8px;
+  font-size: 16px;
+  color: #ebebeb;
+  font-weight: 300;
+  letter-spacing: .0625em;
+  font-family: 'Open Sans', sans-serif;
+  transition: .25s all ease-in-out;
+  cursor: pointer;
+
+  &:not(:last-of-type) {
+    margin-right: 16px;
+  }
+
+  &:hover {
+    background-color: rgba(#282828, .5);
+    transition: .25s all ease-in-out;
+    animation: hoverFlickering 1.5s ease-in-out infinite;
+    animation-delay: .25s;
+  }
+}
+
+@keyframes hoverFlickering {
+	0% , 100%{
+		text-shadow: 0 0 16px transparent,
+		0 0 8px transparent,
+		0 0 4px transparent;
+	}
+	50% {
+		text-shadow: 0 0 16px rgba(#ebebeb, .25),
+		0 0 8px rgba(#ebebeb, .25),
+		0 0 4px rgba(#ebebeb, .25);
+	}
+}
