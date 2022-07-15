@@ -70,21 +70,23 @@ function randomSlots(playersAmount: number) {
 export const Players: React.FC = () => {
   const [shouldRenderPlayers, setShouldRenderPlayers] = useState<boolean>(false)
   const [shouldRenderSlots, setShouldRenderSlots] = useState<boolean>(false)
+  const [compactMode, setCompactMode] = useState<boolean>(true)
   const playersAmount = useSelector((state: RootState) => state.playersAmount)
   let donAmount = useSelector((state: RootState) => state.donAmount)
   let mafiaAmount = useSelector((state: RootState) => state.mafiaAmount)
   let commissarAmount = useSelector((state: RootState) => state.commissarAmount)
   let medicAmount = useSelector((state: RootState) => state.medicAmount)
-
   const playersList = useMemo(() => randomPlayers(playersAmount, donAmount, mafiaAmount, commissarAmount, medicAmount
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
     ), [playersAmount, donAmount, mafiaAmount, commissarAmount, medicAmount, shouldRenderPlayers])
   /* eslint-disable-next-line react-hooks/exhaustive-deps */
   const slotsList = useMemo(() => randomSlots(playersAmount), [playersAmount, shouldRenderSlots])
+  const modeButtonActive = !compactMode ? classes.active : ''
+  const slotsRenderActive = shouldRenderSlots ? classes.active : ''
 
   function renderPlayers() {
     return playersList.map((player, index) => {
-      return <Player key={String(index)} number={index + 1} role={playersList[index]} slot={shouldRenderSlots ? slotsList[index] : null} />
+      return <Player key={String(index)} number={index + 1} role={playersList[index]} slot={shouldRenderSlots ? slotsList[index] : null} compactMode={compactMode} />
     })
   }
 
@@ -93,7 +95,34 @@ export const Players: React.FC = () => {
       <div className={classes.players}>
         <div className={classes.playersControls}>
           <button className={classes.playersControlsButton} onClick={() => setShouldRenderPlayers(!shouldRenderPlayers)}>Генерація ролей</button>
-          <button className={classes.playersControlsButton} onClick={() => setShouldRenderSlots(!shouldRenderSlots)}>Зміна слотів</button>
+          {!shouldRenderSlots
+              ? <span className={classes.playersControlsCheckButton}>
+                  <span className={classes.playersControlsCheckButtonLabel}>Зміна слотів</span>
+                  <button className={classes.playersControlsCheckButtonSwitch} onClick={() => setShouldRenderSlots(!shouldRenderSlots)}>
+                    <span className={classes.playersControlsCheckButtonSwitchTrack} />
+                  </button>
+                </span>
+              : <span className={classes.playersControlsCheckButton}>
+                  <span className={classes.playersControlsCheckButtonLabel}>Зміна слотів</span>
+                  <button className={classes.playersControlsCheckButtonSwitch + ' ' + slotsRenderActive} onClick={() => setShouldRenderSlots(!shouldRenderSlots)}>
+                    <span className={classes.playersControlsCheckButtonSwitchTrack + ' ' + slotsRenderActive} />
+                  </button>
+                </span>
+          }
+          {compactMode
+              ? <span className={classes.playersControlsCheckButton}>
+                  <span className={classes.playersControlsCheckButtonLabel}>Компактний</span>
+                  <button className={classes.playersControlsCheckButtonSwitch} onClick={() => setCompactMode(!compactMode)}>
+                    <span className={classes.playersControlsCheckButtonSwitchTrack} />
+                  </button>
+                </span>
+              : <span className={classes.playersControlsCheckButton}>
+                  <span className={classes.playersControlsCheckButtonLabel}>Розширений</span>
+                  <button className={classes.playersControlsCheckButtonSwitch + ' ' + modeButtonActive} onClick={() => setCompactMode(!compactMode)}>
+                    <span className={classes.playersControlsCheckButtonSwitchTrack + ' ' + modeButtonActive} />
+                  </button>
+                </span>
+          }
         </div>
         <div className={classes.flexWrapper}>
           <div className={classes.flexWrapperItem}>

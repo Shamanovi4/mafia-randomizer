@@ -7,11 +7,14 @@ interface Props {
   number: number
   role: string
   slot: any
+  compactMode: boolean
 }
 
 export const Player: React.FC<Props> = props => {
   const [fouls, setFouls] = useState<number>(0)
+  const [value, setValue] = useState<string>('')
   const active = props.slot !== null ? classes.active : ''
+  const compact = props.compactMode ? classes.compact : ''
 
   const setRole = () => {
     switch(props.role) {
@@ -33,8 +36,12 @@ export const Player: React.FC<Props> = props => {
     if (fouls + 1 <= 4) setFouls(fouls + 1)
   }
 
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(String(event.target.value))
+  }
+
   return (
-    <li className={classes.player + ' ' + active}>
+    <li className={classes.player + ' ' + compact + ' ' + active}>
       {props.slot !== null
           ? <div className={classes.playerSlot + ' ' + active}>
               <span className={classes.playerSlotNumber}>{props.number}</span>
@@ -46,6 +53,10 @@ export const Player: React.FC<Props> = props => {
           : <div className={classes.playerSlot}>
               <span className={classes.playerSlotNumber}>{props.number}</span>
             </div>
+      }
+      {!props.compactMode
+          ? <input className={classes.playerInput} type="text" value={value} onChange={event => onChange(event)} placeholder={'...'} />
+          : ''
       }
       <span className={classes.playerRole + ' ' + role}>{props.role}</span>
       <span className={classes.playerFouls}>

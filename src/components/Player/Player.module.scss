@@ -2,14 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 256px;
   width: 100%;
   font-size: 16px;
   color: #ebebeb;
   transition: .5s all ease-in-out;
+  
+  &.compact {
+    max-width: 256px;
+  }
 
-  &.active {
-    max-width: 320px;
+  &.compact.active {
+    max-width: 300px;
   }
 
   &:not(:last-of-type) {
@@ -40,8 +43,29 @@
     }
   }
 
-  &Role {
+  &Input {
+    text-align: center;
+    overflow: hidden;
+    width: 192px;
+    height: 32px;
     margin-right: 16px;
+    padding: 4px 12px;
+    letter-spacing: 0.0625em;
+    color: #ebebeb;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;  
+    transition: .25s all ease-in-out;
+
+    &:focus {
+      background: rgba(#282828, .5);
+      transition: .25s all ease-in-out;
+    }
+  }
+
+  &Role {
+    text-align: center;
+    width: 72px;
     letter-spacing: 0.0625em;
     font-family: 'Roboto', sans-serif;
 
@@ -75,6 +99,7 @@
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 16px;
 
     &Button {
       display: inline-flex;
