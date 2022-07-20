@@ -1,4 +1,5 @@
 import React from 'react'
+import {Footer} from '../../components/Footer/Footer'
 import {Timer} from '../../components/Timer/Timer'
 import classes from './Layout.module.scss'
 
@@ -15,6 +16,9 @@ export const Layout: React.FC<Props> = props => {
 			<main>
 				{props.children}
 			</main>
+      <footer>
+        <Footer />
+      </footer>
 		</div>
 	)
 }
