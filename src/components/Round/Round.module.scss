@@ -1,31 +1,22 @@
 .round {
-  background: linear-gradient(135deg, rgba(#d7d7d7, 0.15), rgba(#d7d7d7, 0.05));
-	backdrop-filter: blur(4px);
-	margin-top: 40px;
+  background: rgba(#282828, 0.5);
+  margin-top: 20px;
   padding: 20px;
-	border-radius: 1.25em;
-	box-shadow: 0 0 8px rgba(#141414, 1),
-	0 0 8px rgba(#141414, 0.5),
-	0 0 16px rgba(#141414, 0.25);
-
-  &:first-of-type {
-    margin-top: 32px;
-  }
+  width: 100%;
+  min-height: 120px;
+  border-radius: 0.75em;
+  box-shadow: 0 0 8px rgba(#141414, 1), 0 0 8px rgba(#141414, 0.5),
+    0 0 16px rgba(#141414, 0.25);
+  transition: 0.25s all ease-in-out;
 
   &Notes {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
   }
+
+  &.active {
+    background: rgba(#505050, 0.5);
+    transition: 0.25s all ease-in-out;
+  }
 }
-
-@media (max-width: 576px) {
-	.round {
-    margin-top: 20px;
-
-    &:first-of-type {
-      margin-top: 12px;
-    }
-	}
-}
-

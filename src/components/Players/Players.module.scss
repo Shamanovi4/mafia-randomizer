@@ -24,41 +24,44 @@
       border-radius: 8px;
       background-color: transparent;
       font-size: 16px;
-      font-weight: 700;
-      letter-spacing: .0625em;
+      font-weight: 500;
+      letter-spacing: 0.0625em;
       color: #ebebeb;
       font-family: 'Open Sans', sans-serif;
-      transition: .5s all ease-in-out;
+      transition: 0.5s all ease-in-out;
       cursor: pointer;
       overflow: hidden;
 
       &:not(:last-of-type) {
         margin-right: 40px;
       }
-  
+
       &::before {
         content: '';
         position: absolute;
         top: -25%;
-        left: -112px;
+        left: -50%;
         z-index: 1;
         width: 50%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(#ebebeb, 0.15), rgba(#ebebeb, 0.05));
+        background: linear-gradient(
+          135deg,
+          rgba(#ebebeb, 0.15),
+          rgba(#ebebeb, 0.05)
+        );
         backdrop-filter: blur(4px);
-        box-shadow: 0 0 8px rgba(#ebebeb, 1),
-        0 0 8px rgba(#ebebeb, 0.5),
-        0 0 16px rgba(#ebebeb, 0.25);
-        transition: .25s all ease-in-out;
+        box-shadow: 0 0 8px rgba(#ebebeb, 1), 0 0 8px rgba(#ebebeb, 0.5),
+          0 0 16px rgba(#ebebeb, 0.25);
+        transition: 0.25s all ease-in-out;
         transform: rotate(135deg);
       }
-  
+
       &:hover {
         color: #ebebeb;
-  
+
         &::before {
           left: 100%;
-          transition: .25s all ease-in-out;
+          transition: 0.25s all ease-in-out;
         }
       }
     }
@@ -72,10 +75,10 @@
 
       &Label {
         text-align: center;
-        width: 120px; 
+        width: 120px;
         font-size: 16px;
-        font-weight: 700;
-        letter-spacing: .0625em;
+        font-weight: 500;
+        letter-spacing: 0.0625em;
         color: #ebebeb;
         font-family: 'Open Sans', sans-serif;
       }
@@ -88,8 +91,14 @@
         margin-left: 20px;
         border: 2px solid #ebebeb;
         border-radius: 24px;
-        transition: .5s all ease-in-out;
         cursor: pointer;
+
+        &:hover {
+          border-color: transparent;
+          transition: 0.25s all ease-in-out;
+          animation: hoverFlickering 1.5s ease-in-out infinite;
+          animation-delay: 0.25s;
+        }
 
         &Track {
           content: '';
@@ -102,7 +111,7 @@
           border-radius: 8px;
           background-color: #282828;
           overflow: hidden;
-          transition: .25s all ease-in-out;
+          transition: 0.25s all ease-in-out;
 
           &::after {
             content: '';
@@ -113,7 +122,7 @@
             height: 100%;
             z-index: 1;
             background-color: #d7d7d7;
-            transition: .25s all ease-in-out;
+            transition: 0.25s all ease-in-out;
           }
 
           &.active {
@@ -122,7 +131,7 @@
             }
           }
         }
-  
+
         &::after {
           content: '';
           position: absolute;
@@ -133,9 +142,9 @@
           z-index: 1;
           border-radius: 50%;
           background-color: #afafaf;
-          transition: .25s all ease-in-out;
+          transition: 0.25s all ease-in-out;
         }
-  
+
         &.active {
           &::after {
             left: 32px;
@@ -160,6 +169,23 @@
   }
 }
 
+@keyframes hoverFlickering {
+  0%,
+  100% {
+    border-color: transparent;
+    box-shadow: 0 0 2px transparent, inset 0 0 2px transparent;
+    filter: drop-shadow(0 0 8px transparent) drop-shadow(0 0 4px transparent)
+      drop-shadow(0 0 2px transparent);
+  }
+  50% {
+    border-color: #ebebeb;
+    box-shadow: 0 0 2px rgba(#ebebeb, 1), inset 0 0 2px rgba(#ebebeb, 1);
+    filter: drop-shadow(0 0 8px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 4px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 2px rgba(#ebebeb, 0.25));
+  }
+}
+
 @media (max-width: 768px) {
   .players {
     &Controls {
@@ -181,9 +207,9 @@
 
     &Item {
       width: 100%;
-      
+
       &:last-of-type {
-        margin: 0 0 40px 0 ;
+        margin: 0 0 40px 0;
       }
     }
   }
@@ -193,7 +219,15 @@
   .flexWrapper {
     &Item {
       &:last-of-type {
-        margin: 0 0 20px 0 ;
+        margin: 0 0 20px 0;
+      }
+    }
+  }
+
+  .players {
+    &Controls {
+      &Button {
+        width: 100%;
       }
     }
   }

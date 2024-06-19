@@ -3,17 +3,17 @@
 *,
 *::before,
 *::after {
-	margin: 0;
+  margin: 0;
   padding: 0;
-	border: 0;
-	outline: none;
+  border: 0;
+  outline: none;
   box-sizing: border-box;
-	text-decoration: none;
-	background: transparent;
+  text-decoration: none;
+  background: transparent;
 }
 
 body {
-	line-height: 1.5;
+  line-height: 1.5;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,26 +1,26 @@
 .note {
-  width: 64px;
-  height: 64px;
-  margin: 32px 0;
+  width: 48px;
+  height: 48px;
+  margin: 16px 0;
   position: relative;
 
   &:not(:last-of-type) {
-    margin-right: 16px;
+    margin-right: 8px;
   }
 
   &Player {
     position: absolute;
-    top: -32px;
+    top: -24px;
     left: 0;
     z-index: 1;
     width: 100%;
     text-align: center;
     color: #ebebeb;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
   }
-  
+
   &Button {
     display: flex;
     align-items: center;
@@ -29,38 +29,34 @@
     height: 100%;
     border: 2px solid #ebebeb;
     border-radius: 50%;
-    font-size: 40px;
+    font-size: 24px;
     color: #ebebeb;
     cursor: pointer;
-    transition: .25s all ease-in-out;
+    transition: 0.25s all ease-in-out;
 
     &:hover {
-      background-color: rgba(#282828, .5);
+      background-color: rgba(#282828, 0.5);
       border-color: transparent;
-      transition: .25s all ease-in-out;
+      transition: 0.25s all ease-in-out;
       animation: hoverFlickering 1.5s ease-in-out infinite;
-      animation-delay: .25s;
+      animation-delay: 0.25s;
     }
 
-    &.donCheck {
-      background-color: rgba(#141414, .5);
+    &.black {
+      background-color: rgba(#141414, 0.5);
     }
-  
-    &.commisarCheck {
-      background-color: rgba(#eb0000, .5);
-    }
-  
-    &.medicHeal {
-      background-color: rgba(#eb0000, .5);
+
+    &.red {
+      background-color: rgba(#eb0000, 0.5);
     }
   }
-  
-  &Votes{
+
+  &Votes {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: -32px;
+    bottom: -24px;
     left: 0;
     z-index: 1;
     width: 100%;
@@ -71,7 +67,7 @@
       align-items: center;
       justify-content: center;
       color: #ebebeb;
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 500;
       font-family: 'Roboto', sans-serif;
       cursor: pointer;
@@ -80,7 +76,7 @@
     &Amount {
       margin: 0 8px;
       color: #ebebeb;
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 500;
       font-family: 'Roboto', sans-serif;
     }
@@ -88,20 +84,18 @@
 }
 
 @keyframes hoverFlickering {
-	0%, 100% {
+  0%,
+  100% {
     border-color: transparent;
-		box-shadow: 0 0 4px transparent,
-		inset 0 0 4px transparent;
-		filter: drop-shadow(0 0 16px transparent)
-		drop-shadow(0 0 8px transparent)
-		drop-shadow(0 0 4px transparent);
-	}
-	50% {
-		border-color: #ebebeb;
-		box-shadow: 0 0 4px rgba(#ebebeb, 1),
-		inset 0 0 4px rgba(#ebebeb, 1);
-		filter: drop-shadow(0 0 16px rgba(#ebebeb, .25))
-		drop-shadow(0 0 8px rgba(#ebebeb, .25))
-		drop-shadow(0 0 4px rgba(#ebebeb, .25));
-	}
+    box-shadow: 0 0 4px transparent, inset 0 0 4px transparent;
+    filter: drop-shadow(0 0 16px transparent) drop-shadow(0 0 8px transparent)
+      drop-shadow(0 0 4px transparent);
+  }
+  50% {
+    border-color: #ebebeb;
+    box-shadow: 0 0 4px rgba(#ebebeb, 1), inset 0 0 4px rgba(#ebebeb, 1);
+    filter: drop-shadow(0 0 16px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 8px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 4px rgba(#ebebeb, 0.25));
+  }
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.controls {
+.noteControls {
   display: flex;
   flex-wrap: wrap;
 
@@ -15,26 +15,26 @@
     margin-right: 16px;
 
     &Button {
-      height: 48px;
       width: 48px;
+      height: 48px;
       font-size: 48px;
-      background: rgba(#282828, .5);
-      color: rgba(#ebebeb, .25);
+      background: rgba(#282828, 0.5);
+      color: rgba(#ebebeb, 0.25);
       cursor: pointer;
-      transition: .25s all ease-in-out;
-      
+      transition: 0.25s all ease-in-out;
+
       &:hover {
         color: #ebebeb;
-        transition: .25s all ease-in-out;
+        transition: 0.25s all ease-in-out;
       }
     }
 
     &Number {
       text-align: center;
-      width: 96px;
+      width: 48px;
       height: 48px;
       padding: 12px;
-      background: rgba(#282828, .5);
+      background: rgba(#282828, 0.5);
       letter-spacing: 0.0625em;
       color: #ebebeb;
       font-size: 16px;
@@ -44,69 +44,91 @@
   }
 }
 
-.nextRoundButton {
-  position: relative;
-  margin-top: 40px;
-  width: 256px;
-  height: 48px;
-  border: 2px solid #ebebeb;
-  border-radius: 8px;
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: .0625em;
-  color: #ebebeb;
-  font-family: 'Open Sans', sans-serif;
-  transition: .5s all ease-in-out;
-  cursor: pointer;
-  overflow: hidden;
+.roundControls {
+  display: flex;
+  justify-content: space-between;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -25%;
-    left: -112px;
-    z-index: 1;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(#ebebeb, 0.15), rgba(#ebebeb, 0.05));
-    backdrop-filter: blur(4px);
-    box-shadow: 0 0 8px rgba(#ebebeb, 1),
-    0 0 8px rgba(#ebebeb, 0.5),
-    0 0 16px rgba(#ebebeb, 0.25);
-    transition: .25s all ease-in-out;
-    transform: rotate(135deg);
-  }
+  &Button {
+    position: relative;
+    margin-top: 20px;
+    width: 256px;
+    height: 48px;
+    border: 2px solid #ebebeb;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.0625em;
+    color: #ebebeb;
+    font-family: 'Open Sans', sans-serif;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
 
-  &:hover {
     &::before {
-      left: 100%;
-      transition: .25s all ease-in-out;
+      content: '';
+      position: absolute;
+      top: -25%;
+      left: -50%;
+      z-index: 1;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(#ebebeb, 0.15),
+        rgba(#ebebeb, 0.05)
+      );
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 8px rgba(#ebebeb, 1), 0 0 8px rgba(#ebebeb, 0.5),
+        0 0 16px rgba(#ebebeb, 0.25);
+      transition: 0.25s all ease-in-out;
+      transform: rotate(135deg);
+    }
+
+    &:hover {
+      &::before {
+        left: 100%;
+        transition: 0.25s all ease-in-out;
+      }
+    }
+
+    &:last-of-type {
+      margin-left: 20px;
     }
   }
 }
 
 @keyframes hoverFlickering {
-	0%, 100% {
+  0%,
+  100% {
     border-color: transparent;
-		box-shadow: 0 0 2px transparent,
-		inset 0 0 2px transparent;
-		filter: drop-shadow(0 0 8px transparent)
-		drop-shadow(0 0 4px transparent)
-		drop-shadow(0 0 2px transparent);
-	}
-	50% {
-		border-color: #ebebeb;
-		box-shadow: 0 0 2px rgba(#ebebeb, 1),
-		inset 0 0 2px rgba(#ebebeb, 1);
-		filter: drop-shadow(0 0 8px rgba(#ebebeb, .25))
-		drop-shadow(0 0 4px rgba(#ebebeb, .25))
-		drop-shadow(0 0 2px rgba(#ebebeb, .25));
-	}
+    box-shadow: 0 0 2px transparent, inset 0 0 2px transparent;
+    filter: drop-shadow(0 0 8px transparent) drop-shadow(0 0 4px transparent)
+      drop-shadow(0 0 2px transparent);
+  }
+  50% {
+    border-color: #ebebeb;
+    box-shadow: 0 0 2px rgba(#ebebeb, 1), inset 0 0 2px rgba(#ebebeb, 1);
+    filter: drop-shadow(0 0 8px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 4px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 2px rgba(#ebebeb, 0.25));
+  }
 }
 
 @media (max-width: 576px) {
-	.nextRoundButton {
+  .nextRoundButton {
     margin-top: 20px;
-	}
+  }
+
+  .roundControls {
+    flex-direction: column;
+
+    &Button {
+      width: 100%;
+
+      &:last-of-type {
+        margin-left: 0;
+      }
+    }
+  }
 }

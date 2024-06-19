@@ -5,8 +5,8 @@
   width: 100%;
   font-size: 16px;
   color: #ebebeb;
-  transition: .5s all ease-in-out;
-  
+  transition: 0.5s all ease-in-out;
+
   &.compact {
     max-width: 256px;
   }
@@ -22,8 +22,8 @@
   &Slot {
     display: flex;
     margin-right: 16px;
-    transition: .5s all ease-in-out;
-    
+    transition: 0.5s all ease-in-out;
+
     &.active {
       width: 84px;
     }
@@ -54,12 +54,12 @@
     color: #ebebeb;
     font-size: 16px;
     font-weight: 300;
-    font-family: 'Roboto', sans-serif;  
-    transition: .25s all ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.25s all ease-in-out;
 
     &:focus {
-      background: rgba(#282828, .5);
-      transition: .25s all ease-in-out;
+      background: rgba(#282828, 0.5);
+      transition: 0.25s all ease-in-out;
     }
   }
 
@@ -81,12 +81,12 @@
 
     &.don {
       color: #141414;
-      font-weight: 700;
+      font-weight: 500;
     }
 
-    &.commisar {
+    &.sheriff {
       color: #eb0000;
-      font-weight: 700;
+      font-weight: 500;
     }
 
     &.medic {
@@ -109,19 +109,20 @@
       height: 32px;
       border: 1px solid #ebebeb;
       border-radius: 50%;
-      background-color: transparent;
       font-size: 16px;
       font-weight: 500;
       color: #ebebeb;
       font-family: 'Roboto', sans-serif;
       cursor: pointer;
-      transition: .25s all ease-in-out;
+      transition: 0.25s all ease-in-out;
+      background: transparent;
 
       &:hover {
+        background: rgba(#141414, 0.5);
         border-color: transparent;
-        transition: .25s all ease-in-out;
+        transition: 0.25s all ease-in-out;
         animation: hoverFlickering 1.5s ease-in-out infinite;
-        animation-delay: .25s;
+        animation-delay: 0.25s;
       }
     }
 
@@ -137,20 +138,18 @@
 }
 
 @keyframes hoverFlickering {
-	0%, 100% {
+  0%,
+  100% {
     border-color: transparent;
-		box-shadow: 0 0 4px transparent,
-		inset 0 0 4px transparent;
-		filter: drop-shadow(0 0 16px transparent)
-		drop-shadow(0 0 8px transparent)
-		drop-shadow(0 0 4px transparent);
-	}
-	50% {
-		border-color: #ebebeb;
-		box-shadow: 0 0 4px rgba(#ebebeb, 1),
-		inset 0 0 4px rgba(#ebebeb, 1);
-		filter: drop-shadow(0 0 16px rgba(#ebebeb, .25))
-		drop-shadow(0 0 8px rgba(#ebebeb, .25))
-		drop-shadow(0 0 4px rgba(#ebebeb, .25));
-	}
+    box-shadow: 0 0 2px transparent, inset 0 0 2px transparent;
+    filter: drop-shadow(0 0 8px transparent) drop-shadow(0 0 4px transparent)
+      drop-shadow(0 0 2px transparent);
+  }
+  50% {
+    border-color: #ebebeb;
+    box-shadow: 0 0 2px rgba(#ebebeb, 1), inset 0 0 2px rgba(#ebebeb, 1);
+    filter: drop-shadow(0 0 8px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 4px rgba(#ebebeb, 0.25))
+      drop-shadow(0 0 2px rgba(#ebebeb, 0.25));
+  }
 }
